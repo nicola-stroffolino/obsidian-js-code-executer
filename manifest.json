@@ -3,7 +3,7 @@
 	"name": "JavaScript Code Executer",
 	"version": "1.0",
 	"minAppVersion": "0.12.0",
-	"description": "This plugin lets you write javascript codeblocks in your notes whenever you compile them.",
+	"description": "This plugin lets you write javascript codeblocks in your notes and run them easily.",
 	"author": "HotBacon",
 	"authorUrl": "https://github.com/HotBaconWasTaken",
 	"isDesktopOnly": true

@@ -1,8 +1,4 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, MarkdownPostProcessorContext, TFile } from 'obsidian';
-import { fstat, readFileSync, writeFileSync, promises as fsPromises, stat } from 'fs';
-import { dirname, join } from 'path';
-import { Request } from 'request';
-import { table } from 'console';
 
 
 export default class MyPlugin extends Plugin {
@@ -28,6 +24,7 @@ export default class MyPlugin extends Plugin {
 					const content = block.firstChild?.textContent;//.replace(/\n.*$/, '');
 					console.log(block);
 					//console.log(ctx);
+
 					// Skip empty code blocks
 					if (!content) return;
 					
@@ -38,7 +35,7 @@ export default class MyPlugin extends Plugin {
 
 					const f = new Function(content);
 					f();
-			
+					
 
 					// const [run_js,...code] = lines;
 					
