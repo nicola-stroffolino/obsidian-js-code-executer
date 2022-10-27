@@ -5,8 +5,8 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 export default class MyPlugin extends Plugin {
 	
 	async onload() {
-		const running = this.app
-		const { basePath } = (this.app.vault.adapter as any);
+		// const running = this.app
+		// const { basePath } = (this.app.vault.adapter as any);
 		const { workspace } = this.app;
 
 		this.registerMarkdownPostProcessor(
@@ -33,14 +33,12 @@ export default class MyPlugin extends Plugin {
 			const actions = file.querySelectorAll('.workspace-leaf-content > .view-header > .view-actions > .view-action')
 			
 			const editButton = actions[0];
-
 			if(editButton.ariaLabel?.contains('editing')) return;
 				
 			let content = ctx.getSectionInfo(el);
-			
 			if (!content) return;
-			const [first_line, ...lines] = content!.text.split('\n').slice(content!.lineStart, content!.lineEnd);
 
+			const [first_line, ...lines] = content!.text.split('\n').slice(content!.lineStart, content!.lineEnd);
 			if (!first_line.contains('run-js')) return;
 			
 			const f = new Function(lines.join('\n'));
