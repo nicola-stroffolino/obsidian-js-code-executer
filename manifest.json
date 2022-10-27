@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-js-code-executer",
 	"name": "JavaScript Code Executer",
-	"version": "1.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.12.0",
 	"description": "This plugin lets you write runnable javascript codeblocks in your notes.",
 	"author": "Nicola Stroffolino",
