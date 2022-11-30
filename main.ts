@@ -1,6 +1,7 @@
 import { Console, debug } from 'console';
+import { on } from 'events';
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting, MarkdownPostProcessorContext, TFile, Workspace } from 'obsidian';
-
+// const $ = 
 
 export default class MyPlugin extends Plugin {
 	
@@ -20,20 +21,17 @@ export default class MyPlugin extends Plugin {
 
 	}
 
-
-
 	async compileJs(workspace: Workspace, el: HTMLElement, ctx: MarkdownPostProcessorContext){
 		await sleep(1);
-		
+
 		const noteContainer = workspace.containerEl.children[2];
-		
 		let activeFiles = noteContainer?.querySelectorAll('.mod-active');
 		
 		activeFiles?.forEach(file => {
-			const actions = file.querySelectorAll('.workspace-leaf-content > .view-header > .view-actions > .view-action')
-			
-			const editButton = actions[0];
-			if(editButton.ariaLabel?.contains('editing')) return;
+			const action = file.querySelectorAll('.workspace-leaf-content > .view-header > .view-actions > a.view-action')
+			const editButton = action[0];
+
+			if (editButton === undefined || editButton.ariaLabel?.contains('editing')) return;
 				
 			let content = ctx.getSectionInfo(el);
 			if (!content) return;
